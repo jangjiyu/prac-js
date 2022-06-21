@@ -70,37 +70,3 @@ console.log(i(2, 2, 2));
 
 
 
-// 객체와 리터럴
-// 단순 배열이 아닌 값의 이름과 속성값이 있는 배열 (여러개를 묶을 때 이름이 필요하다 -> 객체 리터럴 사용)
-// name, year, month, date, gender 등의 정보들을 속성(property)라 함. 
-// 중괄호 {} 사용
-
-const 객체 = {
-    '속성 1 이름': '속성 1 값',
-    '속성 2 이름': '속성 2 값',
-    '속성 3 이름': '속성 3 값',     // 마지막은 쉼표(,) 안 붙여도 되지만 다음에 추가할 거 대비해서 붙이는 게 나음.
-}
-
-const obj = {
-    abc: 'hello',
-    '2a': 'hello1',      // 숫자가 들어간 경우 ''붙이기
-    'c a': 'hello2',     // 띄어쓰기 한 경우 ''붙이기
-    'b-d': 'hello3',     // 특수문자 쓴 경우 ''붙이기
-}
-obj.abc;        // hello
-obj['abc'];    // hello    대괄호[] 쓴 경우 ''붙이기, 따옴표'' 빼먹으면 abc라는 변수가 선언 됐을 시 그 변수의 값을 사용하게 됨.
-// obj.2a;         // errorr   요런 특수한 애들은 대괄호 써줘야함
-obj['2a'];      // hello1
-obj.ca;         // undefined 
-
-obj.def = 'bye';    // 추가
-delete obj.def;     // 제거
-
-// 함수와 배열도 객체이다!
-function hello() {}
-hello.a = 'really?';
-console.log(hello.a);   // really?
-const array = [];
-array.b = 'wow';
-console.log(array.b);   // wow
-// 객체의 속성을 가짐. but 위처럼 쓰이진 않음 걍 예시~
