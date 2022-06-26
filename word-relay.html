@@ -1,0 +1,107 @@
+<!-- 순서도(flowchart) 중요 -->
+
+<html lang="ko">
+<head>           
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+    <script>
+      const number = parseInt(prompt('몇 명이 참가하나요?'), 10);   // prompt: 팝업창(input가능), parseInt: Integer로 변경(prompt는 string을 입력 받으므로 숫자로 바꿔주기), 마지막 10은 '10진법'(10진법일 경우 생략가능)
+      // alert(number);   alert는 경고창 - 확인 버튼만 존재
+      // const yesOrNo = confirm('맞나요?');   confirm은 확인, 취소 버튼 존재
+
+      const $button = document.querySelector('button');
+      // 변수명에 $, _ 등 특수문자 사용 가능. html 태그를 선택해서 변수에 넣어줄 때 $를 붙이고, queryselectorAll일 경우 $$ 2개 붙이기.(필수X, 내가 알아보기 편하게 하기 위해. js문법이 아닌 html 태그 가져온 거다!)
+
+      const $input = document.querySelector('input');
+
+      const $word = document.querySelector('#word');
+
+      const $order = document.querySelector('#order');
+
+      // document.querySelector('#word');   id가 word인 쿼리 가져옴. id는 고유의 값으로 하나만 지정해줘야 함.
+      // document.querySelectorAll(.class);   클래스는 '.'붙임. 여러개 선택 시 클래스를 부여해서 가져오면 됨.
+      // document.querySelector('div>span');    div의 자식인 span을 가져옴. 자식의 후손들은 X -> <div><p><span></span></p></div>의 경우 'div span'(div의 후손인 span)라 적어야 span 가져올 수 있음. 복잡해질 경우 Id 부여하기.
+      
+      // document.querySelector('input').addEventListener('input', function() {
+      // });   
+      // input창에 글자 Input 시 function(){} 호출  -> 리스너함수or콜백함수or익명함수 등으로 불림.
+
+      // document.querySelector('input').addEventListener('input', (event) => {
+      //   console.log('글자 입력', event.target.value);
+      // });
+      // 화살표 함수로 쓴 경우. 엄연히 말하면 다르지만 이 경우에선 같음. + event를 넣어주고 event.target.value로 뽑아주면 input한 value(값)도 알 수 있음.
+
+      // document.querySelector('button').addEventListener('click', function() {
+      // });   
+      // button을 click 시 funtion(){} 호출
+
+      // document.querySelector('button').addEventListener('click', () => {
+      // });
+      // 화살표 함수로 쓴 경우. 엄연히 말하면 다르지만 이 경우에선 같음.
+      
+      // const onClick = function() {
+      //   console.log('버튼 클릭');
+      //   return undefined;  -> 생략가능. 보통 안 씀.
+      // }
+      // document.querySelector('button').addEventListener('click', onClick);
+      // 리스너함수를 onClick이라는 변수로 넣어준 경우(위와 같음). 이때 'click', 옆의 콜백 함수 자리에는 onClick()이라 입력하면 X, onClick()는 undefined를 return하므로 onClick()은 undefined를 넣는 것과 같음.
+      
+      let word;     // 제시어, 제시어가 비어 있는지 확인하기 위해 word라는 변수 만듦.
+      let newWord;  // 새로 입력한 단어
+
+      const onClickButton = () => {       
+        if(!word) { // 제시어가 비어 있는가?
+          // 비어 있다.
+          // 위에서 선언한 변수 word에 값을 할당 안 했으므로 undefined가 반환됨 (false) -> '!word'는 true가 됨. -> if(true) {}~~~ => true인 경우~~~
+          word = newWord; // 입력한 단어가 제시어가 된다. 
+          $word.textContent = word; // 입력한 단어를 제시어에 넣어줌. (word = newWord;로 변수를 바꿔줬으니 화면도 바꿔주는 것)
+          const order = Number($order.textContent); // 현재 순서, textContent는 문자열이므로 Number를 써서 숫자로 변경해주기
+          if (order + 1 > number) { // = 'order === number' 현재 순서가 number(참가자)보다 많아지면 1번째 참가자로 돌아감 
+            $order.textContent = 1; // 1번째 참가자로 돌아감
+          } else {
+            $order.textContent = order + 1;
+          }
+          $input.value = '';  // input창을 빈칸으로 만들어주기 (다음 사람이 입력해야 하니까)
+          $input.focus();     // input창에 마우스 커서를 둠.
+          // 참고) textContent와 value의 차이 : input, select, textarea처럼 값을 입력하는 경우 value. 
+        } else {
+          // 비어 있지 않다.
+          if(word[word.length - 1] === newWord[0]) {  // 올바른가
+            word = newWord;
+            $word.textContent = word;
+            const order = Number($order.textContent); // 현재 순서
+            if (order + 1 > number) { 
+              $order.textContent = 1;
+            } else {
+              $order.textContent = order + 1;
+            }
+            $input.value = '';         
+            $input.focus();     // 이렇게 중복 되는 코드는 좋지X, 실제 프로그래밍에선 중복 되는 것 고치기.
+          } else {  // 올바르지 않은가
+            alert('올바르지 않은 단어입니다');
+          }
+        }
+      };
+
+      const onInput = (event) => {    // event에는 addEventListener한 input 이벤트가 객체의 형태로 담겨 있음.
+        newWord = event.target.value; // 새로운 단어가 입력 되면 newWord에 저장  - event가 target된(발생된) 곳의 value를 가져와 newWord에 할당.
+      };
+
+      $button.addEventListener('click', onClickButton);   // $button을 click하면 onClickButton 호출(위에 변수 지정해놓은 것)
+      $input.addEventListener('input', onInput);          // $input에 input이 일어나면 onInput 호출(위에 변수 지정해놓은 것)
+    </script>
+</body>
+
+</html>

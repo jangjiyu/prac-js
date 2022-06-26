@@ -44,7 +44,7 @@ d('argument');
 
 function e(w, x, y, z) {
     console.log(w, x, y, z);
-    console.log(arguments);             // 함수 안에선 arguments를 선언 안 해도 쓸 수 있음(화살표 함수 제외), 호출 할 때 넣었던 argument들이 뭐였는지 배열의 형태로 출력해줌.
+    console.log(arguments);             // 함수 안에선 arguments를 선언 안 해도 쓸 수 있음(화살표 함수 제외), 호출 할 때 넣었던 argument들이 뭐였는지 배열의 형태(유사 배열)로 출력해줌.
 }
 e('Hello', 'Parameter', 'Argument');    // z값은 없으므로 undefined로 출력 됨. (남거나 많거나 하는 값들은 무시되고 짝지어짐)
 
