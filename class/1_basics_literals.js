@@ -18,6 +18,6 @@ const book2 = {
   },
 };
 
-console.log(book2.getSummary());
-console.log(Object.values(book1));
-console.log(Object.keys(book1));
+console.log(book2.getSummary()); // Book2 was written by Jane in 2022
+console.log(Object.values(book1)); // [ 'Book1', 'John', '2020', [Function: getSummary] ]
+console.log(Object.keys(book1)); // [ 'title', 'author', 'year', 'getSummary' ]

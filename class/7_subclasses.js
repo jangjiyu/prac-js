@@ -24,7 +24,7 @@ class Magazine extends Book {
 // Instantiate Magazine
 const mag1 = new Magazine("Mag1", "John", "2020", "Jan");
 
-console.log(mag1);
-console.log(mag1.getSummary());
+console.log(mag1); // Magazine { title: 'Mag1', author: 'John', year: '2020', month: 'Jan' }
+console.log(mag1.getSummary()); // Mag1 was written by John in 2020
 
 // subclass를 쓰는 게 상속하는 것보다 쉽다!

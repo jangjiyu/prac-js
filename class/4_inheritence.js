@@ -29,5 +29,5 @@ const mag1 = new Magazine("Mag1", "John", "2018", "Jan");
 // Use Magazine Constructor
 Magazine.prototype.constructor = Magazine;
 
-console.log(mag1);
-console.log(mag1.getSummary());
+console.log(mag1); // Magazine { title: 'Mag1', author: 'John', year: '2018', month: 'Jan' }
+console.log(mag1.getSummary()); // Mag1 was written by John in 2018

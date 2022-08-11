@@ -29,8 +29,8 @@ class Book {
 // Instantiate Object
 const book1 = new Book("Book1", "John", "2018");
 
-console.log(book1);
+console.log(book1); // Book { title: 'Book1', author: 'John', year: '2018' }
 book1.revise("2022");
-console.log(book1);
+console.log(book1); // Book { title: 'Book1', author: 'John', year: '2018' }
 
-console.log(Book.topBookStore());
+console.log(Book.topBookStore()); // Barnes & Noble

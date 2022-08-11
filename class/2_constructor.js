@@ -13,6 +13,6 @@ function Book(title, author, year) {
 const book1 = new Book("Book1", "John", "2020");
 const book2 = new Book("Book2", "Jane", "2022");
 
-console.log(book1.getSummary());
+console.log(book1.getSummary()); // Book1 was written by John in 2020
 // 컨스트럭터에 넣어놔서 프로토타입이 아닌 함수로 불러옴
-// -> 3번 prototype
+// -> 3번 prototype에서 프로토타입 사용법을 알아보자.
